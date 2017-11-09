@@ -2,7 +2,7 @@
 *& Include Z_TEMPLATETOP                                     Report Z_TEMPLATE
 *&
 *&---------------------------------------------------------------------*
-REPORT z_template.
+REPORT z_template MESSAGE-ID zit00..
 
 "gv_okcode : (관용어) sy-ucomm 을 받는 global variable.
 DATA gv_okcode TYPE sy-ucomm.
@@ -23,7 +23,7 @@ DATA: gs_fcat TYPE lvc_s_fcat,
       gt_fcat TYPE lvc_t_fcat.
 
 "Tables 선언. Selection Screen이나
-*TABLES: XXXX.
+TABLES: bkpf.
 
 "-- Internal Table 및 structure를 선언하는 2가지 방법.
 "1. Structure를 선언하고 이를 참조하여 internal table을 만드는 방법.
@@ -46,8 +46,8 @@ DATA : gs_data TYPE gty_data,
 
 "덧: 이미 선언된 테이블을 그대로 본따는 경우와
 "    선언 형태가 비슷함에 주목하자.
-*DATA: GT_XXXX TYPE TABLE OF XXXX,
-*      GS_XXXX TYPE XXXX.
+*DATA: gs_skat TYPE skat,
+*      gt_skat TYPE TABLE OF skat.
 
 
 "2. TYPES를 선언,참조하여 모두 만드는 방법.
@@ -65,3 +65,16 @@ DATA: BEGIN OF gs_body,
         waers TYPE bkpf-waers,
       END OF gs_body,
       gt_body LIKE TABLE OF gs_body.
+
+DATA: gs_skat TYPE skat,
+      gt_skat TYPE TABLE OF skat.
+
+DATA: gs_bseg TYPE bseg,
+      gt_bseg TYPE TABLE OF bseg.
+
+DATA: gs_fcat_pop TYPE lvc_s_fcat,
+      gt_fcat_pop TYPE lvc_t_fcat,
+      gs_layo_pop TYPE lvc_s_layo.
+
+DATA: go_container_pop TYPE REF TO cl_gui_custom_container,
+      go_alv_grid_pop  TYPE REF TO cl_gui_alv_grid.
