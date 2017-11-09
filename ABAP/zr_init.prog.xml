@@ -1,0 +1,23 @@
++﻿<?xml version="1.0" encoding="utf-8"?>    
+2 +<abapGit version="v1.0.0" serializer="LCL_OBJECT_PROG" serializer_version="v1.0.0">    
+3 + <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">    
+4 +  <asx:values>    
+5 +   <PROGDIR>    
+6 +    <NAME>ZR_INIT</NAME>    
+7 +    <STATE>A</STATE>    
+8 +    <VARCL>X</VARCL>    
+9 +    <SUBC>1</SUBC>    
+10 +    <RLOAD>E</RLOAD>    
+11 +    <FIXPT>X</FIXPT>    
+12 +    <UCCHECK>X</UCCHECK>    
+13 +   </PROGDIR>    
+14 +   <TPOOL>    
+15 +    <item>    
+16 +     <ID>R</ID>    
+17 +     <ENTRY>zreport_init</ENTRY>    
+18 +     <LENGTH>12</LENGTH>    
+19 +    </item>    
+20 +   </TPOOL>    
+21 +  </asx:values>    
+22 + </asx:abap>    
+23 +</abapGit> 
