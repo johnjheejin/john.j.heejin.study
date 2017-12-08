@@ -1,2 +1,2 @@
-This is coming stage for my ABAP.
-THX ><
+# john.j.heejin.study
+공부모음
