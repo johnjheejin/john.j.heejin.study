@@ -171,11 +171,54 @@ USD 1 => KRW 1095
 
 
 
+### 함수를 정의해보자
+
+실습하면서 return 선언이 굳이 없어도 된다 라는 답변이 충격적이다.
+
+#### def_dollarExchange.rb
+
+```ruby
+require 'eu_central_bank' #다른 환율 gem도 많지만, 제일 굳건해 보이는 이름.
+
+def dollarExchange(to)
+	# 은행 객체생성
+	bank = EuCentralBank.new
+	bank.update_rates
+	# 은행 객체에 환율정보를 업뎃해줘
+
+	return bank.exchange(100, 'USD', to)
+	# 100 cent = 1 dollar 를 from에서 to로
+	# return 없어도 됨 ㄷㄷ; 당연히 마지막이 리턴이겟거니
+end
+
+# def 정의한수이름(인자)
+# 내용내용
+# (return)반환값
+# end
+
+puts "USD 1 => KRW #{dollarExchange('KRW')}"
+```
+
+```
+실행결과:
+USD 1 => KRW 1095
+```
+
+
+
+
+
 
 
 ### Bundler : 문명의 이기
 
-지금까지 require 'gemname' 형태로 불러오는데, 이를 위해서 gem을 하나하나 설치해줘야 했다. 이를 해결하기 위한 수단인 bundler를 설치해 활용해보자. 다만 이 bundler또한 Gem이기 때문에 이를 설치해야한다.
+지금까지 require 'gemname' 형태로 불러오는데, 이와 별개로 gem을 쓰기위해 
+
+```
+gem install gemname
+```
+
+를 cmd에서 사용하여 하나하나 설치해줘야 했다. bundler를 설치해 활용해보자. 그렇다면 이를 명령어 한줄로 쉽게 자동화 할 수 있다.
 
 사용할 Gem을 Gemfile에 작성한다. 이후 타 시스템에서 불러올 때 bundle 명렁어를 1번 실행한다.
 
@@ -200,3 +243,6 @@ gem 'httparty'
 gem 'nokogiri'
 ```
 
+
+
+BANG!

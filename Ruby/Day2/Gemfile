@@ -14,3 +14,6 @@ gem 'httparty'
 
 #crawler
 gem 'nokogiri'
+
+#날씨 정보
+gem 'forecast_io'
