@@ -1,0 +1,16 @@
+source 'https://rubygems.org'
+
+#브라우저 실행
+gem 'launchy'
+
+#주식정보
+gem 'stock_quote'
+
+#환율정보
+gem 'eu_central_bank'
+
+#http parser
+gem 'httparty'
+
+#crawler
+gem 'nokogiri'
