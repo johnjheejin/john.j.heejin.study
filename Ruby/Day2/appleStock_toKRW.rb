@@ -13,4 +13,8 @@ end
 	stock = StockQuote::Stock.quote('aapl')
 
 puts "#{stock.name}은 #{stock.l} / 원달러 환율은 #{dollarExchange 'KRW', 1} 이며"
-puts "1만원 기준 #{dollarExchange 'KRW', 136} 입니다."
+
+aapl_stock = stock.l.to_i
+dollar_toKRW = dollarExchange 'KRW', 1
+
+puts "한국돈으로 #{appl_stock * dollar_toKRW} 입니다."

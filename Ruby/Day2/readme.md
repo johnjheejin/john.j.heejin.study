@@ -63,7 +63,7 @@ Day01에서는 간단히 사용자가 접하는 웹페이지가 제공하는 걸
 
 https://github.com/tyrauber/stock_quote 문서를 참고하고 gem install stock_quote 로 설치후 실행한다.
 
-#### appl_stock.rb
+#### aapl_stock.rb
 
 ```ruby
 require 'stock_quote'
@@ -206,6 +206,51 @@ USD 1 => KRW 1095
 
 
 
+```ruby
+require 'stock_quote'
+require 'eu_central_bank'
+
+def dollarExchange(to, amount)
+	# amount = amount.to_i #string이래 그래서 변환.
+	amount = amount.to_i if amount.is_a? String
+	bank = EuCentralBank.new
+	bank.update_rates
+
+	amount * bank.exchange(100, 'USD', to)
+end
+
+	stock = StockQuote::Stock.quote('aapl')
+
+puts "#{stock.name}은 #{stock.l} / 원달러 환율은 #{dollarExchange 'KRW', 1} 이며"
+
+aapl_stock = stock.l.to_i
+dollar_toKRW = dollarExchange 'KRW', 1
+
+puts "한국돈으로 #{appl_stock * dollar_toKRW} 입니다."
+
+```
+
+
+
+
+
+### ARGV : argument variable
+
+사용자가 원할 때 마다 정보를 그때그때 입력해서 원하는 결과를 보고 싶을때 argument를 활용하여
+
+```
+ruby stock.rb aapl
+```
+
+
+
+```ruby
+ARGV.each do |company|
+	stock = StockQuote::Stock.quote(company)
+	puts "#{stock.name} => #{stock.l} / #{exchange 'USD', 'KRW', stock.l}원"
+end
+```
+
 
 
 
@@ -221,6 +266,8 @@ gem install gemname
 를 cmd에서 사용하여 하나하나 설치해줘야 했다. bundler를 설치해 활용해보자. 그렇다면 이를 명령어 한줄로 쉽게 자동화 할 수 있다.
 
 사용할 Gem을 Gemfile에 작성한다. 이후 타 시스템에서 불러올 때 bundle 명렁어를 1번 실행한다.
+
+
 
 #### Gemfile
 
@@ -245,4 +292,103 @@ gem 'nokogiri'
 
 
 
-BANG!
+### BANG!
+
+```ruby
+company.chomp! #뒤에 \n을 짤라버리는 명령어??
+```
+
+chomp! 할 때 설명 한 것은 /n을 자른다는 의미였는데, 실제 의미는 좀 다르다
+
+```ruby
+company = company.chomp
+```
+
+이를 줄여서 쓰는 ruby의 문법이다.
+
+
+
+# Day2.addon
+
+교육제공자의 파일을 기준으로 스스로 실습한 부분
+
+##### geocoder.rb
+
+```ruby
+require 'geocoder'
+
+print '어디가 궁금하세요? : '
+location = gets.chomp!
+
+puts loCord = Geocoder.coordinates(location)
+```
+
+```
+실행결과:
+어디가 궁금하세요? : 
+(seoul 을 입력하고 enter을 누른다)
+
+37.566535
+126.9779692
+```
+
+
+
+
+
+##### forecast_io.rb
+
+```ruby
+require 'forecast_io'
+# require 'typhoeus/adapters/faraday'
+
+# Faraday.default_adapter = :typhoeus
+ForecastIO.configure do |configuration|
+  configuration.api_key = 'c3c46f2ceb471e5d5bf6cd29b5708bfe'
+end
+
+forecast = ForecastIO.forecast(37.501520, 127.039595)# 서울 gps위치
+
+puts forecast
+```
+
+```
+#<Hashie::Mash currently= ...(엄청길고 복잡한 정보들)
+...icon="clear-day" summary="Clear throughout the day."> latitude=37.50152 longitude=127.039595 offset=9 timezone="Asia/Seoul">
+```
+
+
+
+##### forecast.rb
+
+```ruby
+require 'geocoder'
+require 'forecast_io'
+
+print '어디가 궁금하세요? : '
+
+location = gets.chomp!
+#get함수가 들어가 있으면 우선 멈추고 입력을 받는다.
+loCord = Geocoder.coordinates(location)
+
+ForecastIO.configure do |configuration|
+  configuration.api_key = 'c3c46f2ceb471e5d5bf6cd29b5708bfe'
+end
+
+forecastInfo = ForecastIO.forecast(loCord[0], loCord[1])
+
+forecast = forecastInfo.currently
+
+puts forecast.summary
+puts forecast.apparentTemperature
+```
+
+```
+어디가 궁금하세요? : 
+(seoul 을 입력하고 enter을 누른다)
+Clear
+7.61
+```
+
+
+
