@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+#url 열기
+gem 'open-uri'
