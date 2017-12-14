@@ -1,0 +1,20 @@
+<!DOCTYPE html>	
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h1>투표결과</h1>
+	<p><%=@list %></p>
+	<p><%
+		@list.each do |row|
+		%>
+		<%=row[0]%>님의 선호결과 : <%=row[1]%> <br>
+		<%	
+		end
+		%>
+		</p>
+	<a href="/">Home</a>
+</body>
+</html>

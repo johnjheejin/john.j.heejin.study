@@ -112,6 +112,8 @@ touch 명령어를 쓰면 확장자 상관없이 파일만들기에 유용하다
 
 ### 영화 추천해주기 : crawling, sinatra 복습
 
+#### randomMovie
+
 ##### movie.rb
 
 ```ruby
