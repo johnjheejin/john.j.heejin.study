@@ -287,6 +287,8 @@ the comments in the Vagrantfile as well as documentation on
 
 이후 생산된 Vagrantfile을 실습환경을 위해  다음과 같이 수정한다.
 
+##### Vagrantfile
+
 ```ruby
 수정하는 부분:
 ...
