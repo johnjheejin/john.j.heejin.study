@@ -247,6 +247,8 @@ binding.pry를 건 시점 기준으로만 가지고 놀 수 있다.
 
 
 
+##### forecast.rbW
+
 ```ruby
 require 'forecast_io'
 require 'awesome_print'
@@ -281,7 +283,7 @@ puts "현재 날씨는 #{c.summary} 이고, \n섭씨 #{f_to_c(c.apparentTemperat
 
 
 
-
+##### geocoder_forecast.rb
 
 ```ruby
 require 'forecast_io'
@@ -362,7 +364,7 @@ binding.pry
 
 
 
-
+##### scrapper.rb
 
 ```ruby
 require 'mechanize'
@@ -465,7 +467,7 @@ recursive (폴더를 삭제할때) force (원래 유닉스시스템은 안파일
 
 
 
-
+##### Arttii.rb
 
 ```ruby
 require "artii"
@@ -512,3 +514,139 @@ ubuntu@ubuntu-xenial:/vagrant/day6$
 
 
 
+
+
+SINATRA 빠이염! HELLO RAILS!
+
+https://gorails.com/setup/ubuntu/16.04
+
+여기에 따라서 설치를 한다.
+
+
+
+```
+To install NodeJS, we're going to add it using the official repository:
+
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+And now, without further adieu:
+
+gem install rails -v 4.2.9
+If you're using rbenv, you'll need to run the following command to make the rails executable available:
+
+rbenv rehash
+Now that you've installed Rails, you can run the rails -v command to make sure you have everything installed correctly:
+
+rails -v
+# Rails 4.2.9
+```
+
+
+
+
+
+```
+ubuntu@ubuntu-xenial:/vagrant/day6$ rails -v
+Rails 4.2.9
+ubuntu@ubuntu-xenial:/vagrant/day6$ rails new apple
+```
+
+```
+rails s -b 0.0.0.0
+```
+
+```
+실행결과:
+[2017-12-18 07:42:29] INFO  WEBrick 1.3.1
+[2017-12-18 07:42:29] INFO  ruby 2.4.2 (2017-09-14) [x86_64-linux]
+[2017-12-18 07:42:29] INFO  WEBrick::HTTPServer#start: pid=16527 port=3000
+(localhost:3000 으로 접속하면 rails 기본 페이지가 출력된다.)
+```
+
+
+
+
+
+rails g controller home
+
+```linux
+Running via Spring preloader in process 16631
+      create  app/controllers/home_controller.rb
+      invoke  erb
+      create    app/views/home
+      invoke  test_unit
+      create    test/controllers/home_controller_test.rb
+      invoke  helper
+      create    app/helpers/home_helper.rb
+      invoke    test_unit
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/home.coffee
+      invoke    scss
+      create      app/assets/stylesheets/home.scss
+
+```
+
+
+
+configration (설정)폴더안의
+
+routes.rb
+
+```ruby
+Rails.application.routes.draw do
+  ################################################
+  root 'home#index'
+  get 'home/index'
+  
+  # 주소요청과정 1
+  # 요청을 맨처음 받는 곳
+  # get 'home/index' => 'home#index'
+  # get 주소로 보내면, => home컨트롤러의 index를 실행하라
+  # 이때 index는 view나 erb를 모두 칭한다. 그러니 이름은 같은 것이 좋다.
+  # 만약 경로가 같다면, 생략할 수 있다.
+
+  ################################################
+```
+
+Route + controller가 원래는 나뉘어져있는건데 저번에 실습한  SINATRA는 이것들이 합쳐진것이다.
+
+
+
+
+
+home_controller.rb
+
+```ruby
+class HomeController < ApplicationController
+	def index
+	# 주소요청과정 2
+		@hihi = "안녕안녕"
+	end
+end
+```
+
+
+
+index.erb
+
+```erb
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>안녕하세요!</h1>
+<h2><%=@hihi %></h2>
+</body>
+</html>
+```
+
+
+
+
+
+서버는 localhost:3000에서 돌아가고 있습니다.
+
+얘는 SIANTRA와 다르게 Routing 설정 이외에는 저장만 해도 적용이 바로바로됩니다.
