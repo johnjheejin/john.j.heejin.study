@@ -18,8 +18,6 @@ puts "Hello@"
 hello!Hello@
 ```
 
-
-
 ##### .length
 
 ```ruby
@@ -29,8 +27,6 @@ puts "I love espresso".length
 ```
 15
 ```
-
-
 
 ##### .reverse
 
@@ -42,8 +38,6 @@ puts "hello".reverse
 실행결과:
 olleh
 ```
-
-
 
 ##### .upcase .downcase
 
@@ -58,8 +52,6 @@ HELLO
 ruby
 ```
 
-
-
 ##### =begin =end : 장문의 주석을 다는 방법
 
 ```ruby
@@ -68,15 +60,13 @@ hi
 =end
 ```
 
-
-
 ##### Naming Conventions
 
-따로 제한은 없지만, 자주 쓰는 것을 따르는 것이 모두에게 마음이 편하다.
-
-
+따로 제한은 없지만, **자주 쓰는 것을 따르는 것**이 모두에게 마음이 편하다.
 
 ##### string interpolation
+
+"" 문구사이에 원하는 변수를 넣는 것을 string interpolation이라 부른다.
 
 ```ruby
 city = 'Seoul'
@@ -90,8 +80,6 @@ print "#{city},#{country}"
 Seoul,KR
 ```
 
-
-
 ##### .capitalize
 
 ```ruby
@@ -103,9 +91,9 @@ print 'Seoul city MY bro.'.capitalize
 Seoul city my bro.
 ```
 
-
-
 ##### string methods
+
+예시로 제시되는 두 줄은 같은 명령이다. 이를 string method라고 부른다.
 
 ```ruby
 answer = answer.capitalize 
@@ -124,9 +112,9 @@ answer.capitalize!
 vagrant halt
 ```
 
+Vagrant설치된 경로에서 Vagrantfile을 찾아서 연다. 이후 SINATRA 활용을 위해 4567포트를 하나 추가한다.
 
 
-저번에 Vagrant설치된 경로에서 Vagrantfile을 찾아서 연다. 이후 4567포트를 하나 추가한다.
 
 ##### Vagrantfile
 
@@ -145,7 +133,7 @@ vagrant halt
 
 
 
-그리고 해당 경로에서 다시 vagrant up을 해서 VM을 구성한다.
+##### vagrant up을 해서 VM을 구성한다.
 
 ```
 vagrant up
@@ -174,7 +162,7 @@ Bringing machine 'default' up with 'virtualbox' provider...
 
 
 
-그리고 다시 varant내부의 ubuntu 에 접속한다
+##### varant내부의 ubuntu 에 접속한다
 
 ```
 vagrant ssh
@@ -196,58 +184,42 @@ Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.4.0-103-generic x86_64)
 
 
 Last login: Wed Dec 13 04:08:39 2017 from 10.0.2.2
-ubuntu@ubuntu-xenial:~$ ^C
-ubuntu@ubuntu-xenial:~$
-
 ```
 
 
 
-rbenv 로 2.3.5 설치하는 이유는?
+### rbenv 로 VM 내부에 2.3.5 설치
 
 ```
 rbenv install 2.3.5
 ```
 
-Ruby 개발 시 더 낮은 버전으로 써야하는 경우에 
-
-바꿔서 실행할 수 있기 때문이다.
-
 ```
+실행결과:
 Downloading ruby-2.3.5.tar.bz2...
 ```
 
+##### 하는 이유는?
+
+Ruby 개발 시 더 호환성을 위해 낮은 버전으로 써야 구동해야하는 경우에  바꿔서 실행할 수 있기 때문이다. 특히 rbenv는 이러한 버전관리를 종합적으로 해주는 역할을 하기에, 더욱 선호한다.
 
 
 
+### 보다 효율적인 개발을 위해
 
-빠른 개발을 위해서 Interactive Ruby를 잘 쓰자
+#### Interactive Ruby를 잘 쓰자
 
 하나하나 정의할때 마다 되는지 안되는지 짧은 분기별로 알 수 있다.
 
+#### binding.pry : pry 활용하기
 
+프로그램을 해당 선언 순간에 멈춘 상태에서 interactive Ruby처럼 활용할 수 있다. 즉 다양한 변수를 찾아갈 수 있고, 정의된 함수에 변수를 넣어 실행해볼 수 있다. 나올 때는 Ctrl +d를 누르면 빠져나온다 이후, 나머지 코드들이 실행된다. rails에 debugger가 있지만, 보다 활용도가 높아서 이것을 선호한다. 실제 코딩시에는 코딩 중간에 변수를 선언해보고 해당 바인딩에서 변수나 함수가 잘 동작하는지 확인한다.
 
-binding.pry
-
-이거를 쓰니까 안꺼지고 계속 프로그램이 실행되고 있고,
-
-변수를 찾아갈 수 있따.
-
-멈추고 이쯤에서 멈추고 갖고 놀겟다
-
-나올 때는 Ctrl +d를 누르면 빠져나온다
-
-물론, 나머지를 다 실행할거야
-
-binding.pry를 건 시점 기준으로만 가지고 놀 수 있다.
+#### Awesome print : 이쁘게 출력하기
 
 
 
-원래 debugger 이것이 있다고 합니다.
-
-
-
-##### forecast.rbW
+##### forecast.rb
 
 ```ruby
 require 'forecast_io'
@@ -278,8 +250,6 @@ puts "현재 날씨는 #{c.summary} 이고, \n섭씨 #{f_to_c(c.apparentTemperat
 현재 날씨는 Partly Cloudy 이고,
 섭씨 3.8입니다.
 ```
-
-
 
 
 
@@ -316,10 +286,6 @@ puts f_to_c f.apparentTemperature
 
 
 mechanize는 시키는거 하는 친구야
-
-
-
-
 
 ```ruby
 require 'mechanize'
