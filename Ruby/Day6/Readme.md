@@ -482,13 +482,21 @@ ubuntu@ubuntu-xenial:/vagrant/day6$
 
 
 
-SINATRA 빠이염! HELLO RAILS!
+### SINATRA 빠이염! HELLO RAILS!
 
 https://gorails.com/setup/ubuntu/16.04
 
 여기에 따라서 설치를 한다.
 
+##### 포인트
 
+* rails를 폴더단위로 프로젝트를 만든다
+* 서버는 기본적으로 localhost:3000에서 돌아가고 있습니다.
+* SIANTRA와 다르게 Routing 설정 이외에는 저장만 해도 적용이 바로바로됩니다.
+
+
+
+##### 가이드 중 일부 발췌
 
 ```
 To install NodeJS, we're going to add it using the official repository:
@@ -509,13 +517,38 @@ rails -v
 
 
 
-
+##### 설치된 rails 버전 확인
 
 ```
-ubuntu@ubuntu-xenial:/vagrant/day6$ rails -v
+rails -v
+```
+
+```
+실행결과:
 Rails 4.2.9
-ubuntu@ubuntu-xenial:/vagrant/day6$ rails new apple
 ```
+
+
+
+##### 새로운 rails 프로젝트 생성
+
+```
+rails new apple
+```
+
+```
+실행결과:
+      create
+      create  README.rdoc
+      create  Rakefile
+      create  config.ru
+...
+
+```
+
+
+
+##### rails 서버 가동하기
 
 ```
 rails s -b 0.0.0.0
@@ -531,11 +564,14 @@ rails s -b 0.0.0.0
 
 
 
+##### home이라는 controller 만들기
 
-
+```
 rails g controller home
+```
 
 ```linux
+실행결과
 Running via Spring preloader in process 16631
       create  app/controllers/home_controller.rb
       invoke  erb
@@ -555,9 +591,7 @@ Running via Spring preloader in process 16631
 
 
 
-configration (설정)폴더안의
-
-routes.rb
+##### config/ routes.rb
 
 ```ruby
 Rails.application.routes.draw do
@@ -579,9 +613,7 @@ Route + controller가 원래는 나뉘어져있는건데 저번에 실습한  SI
 
 
 
-
-
-home_controller.rb
+##### app/ controllers/ home_controller.rb
 
 ```ruby
 class HomeController < ApplicationController
@@ -594,7 +626,7 @@ end
 
 
 
-index.erb
+##### views/ home/ index.erb
 
 ```erb
 <!DOCTYPE html>
@@ -611,8 +643,3 @@ index.erb
 
 
 
-
-
-서버는 localhost:3000에서 돌아가고 있습니다.
-
-얘는 SIANTRA와 다르게 Routing 설정 이외에는 저장만 해도 적용이 바로바로됩니다.
