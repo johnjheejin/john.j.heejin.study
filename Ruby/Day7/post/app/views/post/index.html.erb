@@ -1,0 +1,14 @@
+<h1>Post#index</h1>
+<p>Find me in app/views/post/index.html.erb</p>
+<hr>
+<% @posts.each do |post| 
+%>
+<%=post.title%>
+<br>
+<%=post.contents%> <br>
+<a href="/post/show/<%=post.id%>">see</a>
+<a href="/post/delete/<%=post.id%>">delete</a>
+<a href="/post/edit/<%=post.id%>">edit</a>
+<hr>
+<% end
+%>

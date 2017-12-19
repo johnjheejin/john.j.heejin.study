@@ -1,0 +1,14 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+posts 조회번호 : <%=@posts%>
+<br>
+<br>
+<% @posts.each do |post|%>
+	<hr>
+	<%=post.id%><br>
+	<%=post.title%><br>
+	<%=post.contents%><br>
+	<a href="/posts/read/<%=post.id%>">read</a>
+	<a href="/posts/update/<%=post.id%>">update</a>
+	<a href="/posts/delete/<%=post.id%>">delete</a>
+<% end%>

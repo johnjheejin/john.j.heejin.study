@@ -1,0 +1,16 @@
+<h1>Posts#update</h1>
+<hr>
+<form action="/posts/updating/<%=@post.id%>">
+  <div class="form-group">
+    <label for="exampleInputEmail1">제목</label>
+    <input name="title" type="text" class="form-control" id="title" placeholder="Title here" value="<%=@post.title%>">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">내용</label>
+    <input name="content" type="text" class="form-control" id="contents" placeholder="Type here" value="<%=@post.contents%>">
+  </div>
+  <div class="form-check">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
