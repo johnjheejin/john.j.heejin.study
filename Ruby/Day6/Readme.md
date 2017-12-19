@@ -219,6 +219,8 @@ Ruby 개발 시 더 호환성을 위해 낮은 버전으로 써야 구동해야�
 
 
 
+### 날씨를 출력해보자
+
 ##### forecast.rb
 
 ```ruby
@@ -240,9 +242,10 @@ c = forecast.currently
 
 puts "현재 날씨는 #{c.summary} 이고, \n섭씨 #{f_to_c(c.apparentTemperature)}입니다."
 
-# ap forecast
+# ap forecast 해당 주석을 풀면 해당 gem이 가져오는 결괄르 조금 이쁘게 볼 수 있다.
 
-# binding.pry
+# binding.pry 주석을 풀면 해당 라인까지 실행되고 
+# 선언된 변수나 정의된 함수를 이용해서 interactive 환경을 만들 수 있다.
 ```
 
 ```
@@ -252,6 +255,8 @@ puts "현재 날씨는 #{c.summary} 이고, \n섭씨 #{f_to_c(c.apparentTemperat
 ```
 
 
+
+### geocoder를 활용해 위치를 검색하여 날씨를 출력해보자
 
 ##### geocoder_forecast.rb
 
@@ -285,7 +290,11 @@ puts f_to_c f.apparentTemperature
 
 
 
-mechanize는 시키는거 하는 친구야
+### mechanize : 나 대신 일을 해준다
+
+나 대신 누르고 클릭하고 가져오고 같은 일을 대신해주는 하나의 로봇을 만들어 운영한다고 생각하면 편하다.
+
+##### mechanize 개념을 이해하기 위한 기초코드
 
 ```ruby
 require 'mechanize'
@@ -299,9 +308,11 @@ page = agent.get('https://amazon.com')
 binding.pry
 ```
 
+해당라인 까지 작성하고 실행하여 pry를 직접 활용해보자.
 
 
 
+##### pry를 통해 mechanize가 가져온 자료를 살펴보자
 
 ```erb
 [2] pry(main)> page.form
@@ -326,7 +337,7 @@ binding.pry
 => ""
 ```
 
-
+입력 form을 이용해 입력할 수 있는 것에서 구글 개발자 도구로 찾아본 결과 field-keywords가 검색어였다.
 
 
 
@@ -427,11 +438,13 @@ success
 
 
 
-##### rm -rf
+### rm -rf
 
 recursive (폴더를 삭제할때) force (원래 유닉스시스템은 안파일 없어야 지워지는데 이걸 강제하겠다.)
 
 
+
+### 재미 : ascii art로 만드는 프로그램
 
 ##### Arttii.rb
 
@@ -484,9 +497,9 @@ ubuntu@ubuntu-xenial:/vagrant/day6$
 
 ### SINATRA 빠이염! HELLO RAILS!
 
-https://gorails.com/setup/ubuntu/16.04
+mvc 구조 이해를 위해 SINATRA를 사용하려 했으나 과정이 수정되어 rails로 바로 넘어갑니다.
 
-여기에 따라서 설치를 한다.
+https://gorails.com/setup/ubuntu/16.04 여기에 따라서 설치를 한다.
 
 ##### 포인트
 
@@ -642,4 +655,9 @@ end
 ```
 
 
+
+```
+실행결과:
+안녕안녕 (h2 태그)
+```
 

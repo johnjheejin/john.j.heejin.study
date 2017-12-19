@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Start</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<h3>common layouts</h3>
+<p>pages list.</p>
+<a href="/">home</a><br>
+<a href="/welcome">welcome</a><br>
+<hr>
+<%= yield %>
+
+</body>
+</html>
