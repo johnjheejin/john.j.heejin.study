@@ -723,3 +723,8 @@ rake db:drop
 
 이후 다시 migrate
 
+
+
+
+
+그리고 posts를 다시 만들며 복습했다.

@@ -1,0 +1,8 @@
+<h1>Posts#editpost</h1>
+<form action="/posts/update/<%=@post.id%>" method="POST">
+	id : <%=@post.id%><br>
+	title : <input type="text" name="title" value="<%=@title%>"><br>
+	content : <input type="text" name="content" value="<%=@content%>">
+	<input type="submit" >
+	<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+</form>

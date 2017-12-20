@@ -1,0 +1,12 @@
+<h1>Posts#index</h1>
+<br>
+<hr>
+<% @posts.each do |post|%>
+
+<h2><%= post.title%></h2>	
+<p><%= post.content%></p>
+<a href="posts/read/<%=post.id%>">read</a>
+<a href="posts/editpost/<%=post.id%>">update</a>
+<a data-confirm="지울거야?" data-method="delete" href="posts/delete/<%=post.id%>">delete</a>
+
+<% end %>
