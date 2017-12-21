@@ -1,0 +1,15 @@
+<h1>Index#index</h1>
+<p>Find me in app/views/index/index.html.erb</p>
+<% @posts.each do |post| %>
+	
+	<div class="card bg-light" style="width: 50rem;">
+	  <div class="card-body">
+	    <h2 class="card-title"><%=post.title%></h2>
+	    <p class="card-text"><%=post.content%></p>
+	    <a href="/post/viewpost/<%=post.id%>" class="btn btn-secondary">read</a>
+	   	<a href="/post/editpost/<%=post.id%>" class="btn btn-secondary">update</a>
+		<a data-confirm="지울거야?" data-method="delete" href="/post/delete/<%=post.id%>" class="btn btn-secondary">delete</a>
+	  </div>
+	</div>
+
+<% end %>
