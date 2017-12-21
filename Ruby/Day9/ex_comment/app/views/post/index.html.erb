@@ -1,0 +1,16 @@
+<h1>Post#index</h1>
+<p>Find me in app/views/post/index.html.erb</p>
+<% @posts.each do |post| %>
+	
+	<div class="card bg-light border-warning" style="width: 70rem;">
+<!-- 	  <img class="card-img-top" src="..." alt="Card image cap"> -->
+	  <div class="card-body">
+	    <h2 class="card-title"><%=post.title%></h2>
+	    <h5 class="card-title"><%=post.id%></h5>
+	    <p class="card-text"><%=post.content%></p>
+	    <a href="/post/viewpost/<%=post.id%>" class="btn btn-primary">Go</a>
+	  </div>
+	</div>
+
+<% end%>
+

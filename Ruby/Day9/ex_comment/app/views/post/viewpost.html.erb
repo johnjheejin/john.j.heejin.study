@@ -1,0 +1,43 @@
+<h1>Post#viewpost</h1>
+<p>Find me in app/views/post/viewpost.html.erb</p>
+
+
+	<div class="card bg-light border-warning" style="width: 70rem;">
+		<div class="card-header">
+	    <h2 class="card-title"><%=@post.title%></h2>
+	    post_id: <%=@post.id%>
+	    </div>
+	  <div class="card-body">
+	    <p class="card-text"><%=@post.content%></p>
+	  </div>
+		
+		<div class="card">
+		  <div class="card-header">
+		    Comments
+		  </div>
+		  <div class="card-body">
+		    <blockquote class="blockquote mb-0">
+
+		    <% @post_comments.each do |comment| %>
+
+		      <p><%=comment.content%></p>
+		      <footer class="blockquote-footer">
+		      	<cite title="Source Title">라고 같은 사용자가 말하다</cite>
+		      </footer>
+
+		    <% end %>
+
+				<form action="/post/create_postcomment/<%=@post.id%>">
+				<!-- form action에 달린 @post.id가 있어서 이것 또한 params로 전달된다 -->
+					<p><input type="card-text" name="content"></p>
+					<p><input type="submit"></p>
+				</form>
+
+		    </blockquote>
+
+
+
+		  </div>
+		</div>
+
+	</div>
