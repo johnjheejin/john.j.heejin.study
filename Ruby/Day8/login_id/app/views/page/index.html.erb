@@ -1,2 +1,9 @@
 <h1>Page#index</h1>
 <p>Find me in app/views/page/index.html.erb</p>
+
+<% if session[:user_id] %>
+	<%=session[:user_id]%>님 환영합니다
+	<a href="/page/logout">로그아웃</a>
+<% else %>
+	<a href="/page/login">로그인</a>
+<% end %>

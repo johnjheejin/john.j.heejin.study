@@ -1,2 +1,10 @@
 <h1>Page#login_process</h1>
 <p>Find me in app/views/page/login_process.html.erb</p>
+
+<% if session[:user_id] %>
+	환영합니다, <%=session[:user_id]%>님!
+	<a href="/page/logout">로그아웃</a>
+<% else %>
+	아이디 및 비밀번호를 확인하세요.
+	<a href="/page/login">로그인</a>
+<% end %>

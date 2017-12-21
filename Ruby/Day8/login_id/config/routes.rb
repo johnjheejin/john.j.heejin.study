@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   get 'page/join'
 
-  get 'page/login_process'
+  post 'page/login_process'
 
   get 'page/logout'
 
-  get 'page/join_process'
+  post 'page/join_process'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

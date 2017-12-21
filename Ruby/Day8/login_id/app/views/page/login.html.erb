@@ -1,8 +1,9 @@
 <h1>Page#login</h1>
 <p>Find me in app/views/page/login.html.erb</p>
 
-<form action="/page/login_process">
+<form action="/page/login_process" method="POST">
 	<input type="text" name="account">
 	<input type="password" name="password">
 	<input type="submit">
 	<input type="" name="authenticity_token" value="<%=form_authenticity_token%>">
+</form>

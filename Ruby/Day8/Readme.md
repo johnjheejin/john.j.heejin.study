@@ -59,13 +59,21 @@ rails g model post title content
 
 
 
-서버가동 명령어를 쉽게
+### 서버가동 명령어를 쉽게
 
 ```
 rails s -b 0.0.0.0
 ```
 
 매번 이렇게 가동하는 서버의 커맨드를 조금 간단하게 해보자
+
+vagrant ~폴더에서 .bashirc를 찾아서 수정하자
+
+```
+vi .bashirc
+```
+
+
 
 ```
 ...
@@ -106,21 +114,18 @@ source ~/.bashrc
 
 
 
+### matching 시켜보기
 
-
-post create
-
-get read
-
-put update
-
-delete delete
+* post create
+* get read
+* put update
+* delete delete
 
 
 
-post method 쓰기
+### post
 
-
+#### post 체험해보기
 
 ```erb
 post 'posts/create'
@@ -132,5 +137,31 @@ post 'posts/create'
 
 ```ruby
   # protect_from_forgery with: :exception
+```
+
+위 과정을 거치면 POST로 보내볼 수 있다.
+
+하지만 맨 마지막에 protect를 주석화 시킨 점이 마음에 걸리는데...
+
+
+
+#### CSRF 공격
+
+ 원래 사이트를 조작해서 form을 통해 우리가 원하는 자료를 받게 해주는거
+
+##### app/ controllers/ 
+
+```ruby
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+```
+
+이렇게 친절히 설명되어있다.
+
+
+
+```ruby
+<input type="hidden" name="authenticity_token" value="<%=form_authenticity_token">
 ```
 
